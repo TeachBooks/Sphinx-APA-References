@@ -52,6 +52,11 @@ def copy_stylesheet(app: Sphinx, exc: None) -> None:
 
         copy_asset_file(style, static_dir)
 
+def override_config(app, config):
+    # This runs after the user's conf is read
+    config.bibtex_default_style = 'myapastyle'  # override or set
+    config.bibtex_reference_style = 'author_year_round'  # override or set
+
 def setup(app):
     app.setup_extension("sphinxcontrib.bibtex")
     register_plugin('pybtex.style.labels', 'myapa', MyAPALabelStyle)
@@ -60,3 +65,4 @@ def setup(app):
     app.add_directive('bibliography', APABibliographyDirective, override=True)
     app.connect('build-finished', copy_stylesheet)
     app.add_css_file('apastyle.css')
+    app.connect('config-inited', override_config)
