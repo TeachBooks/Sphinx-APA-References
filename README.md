@@ -75,3 +75,25 @@ Furthermore, the `bibliography` directive is adapted to always use the value `ap
 ## Examples and details
 
 To see examples of usage visit [this page in the TeachBooks manual](https://teachbooks.io/manual/features/apa.html).
+
+## Previous APA implementation
+
+Prior to the creation of this Sphinx extension, APA referencing was implemented by including a local extension in a book subdirectory, as described in [Issue 1090 from the Jupyter Book repository](https://github.com/jupyter-book/jupyter-book/issues/1090).
+
+To upgrade from the previous setup, once this Sphinx extension is implemented in your book, the local extension files in `_ext` can be deleted and the four lines indicated below removed from your `_config.yml` file:
+
+```yaml
+sphinx:
+  config:
+    .
+    .
+    .
+    bibtex_reference_style: author_year_round   # remove
+    bibtex_default_style: myapastyle            # remove
+    .
+    .
+    .
+  local_extensions:
+    apastyle: _ext/                             # remove
+    bracket_citation_style: _ext/               # remove
+```
