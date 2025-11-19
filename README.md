@@ -52,7 +52,7 @@ bibtex_bibfiles:
     - "<path_to_bib_file>/<bibfile>.bib"
 ```
 
-or in your `conf.py` file, add the extension to the `extensions` list:
+or in your `conf.py` file, add the extension to the `extensions` list and specify the location of your bib file:
 
 ```python
 extensions = [...,"sphinx_apa_references",...]
